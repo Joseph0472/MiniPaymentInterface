@@ -1,5 +1,14 @@
 .App {
+  --shadow: 5px 5px 10px rgba(0,0,0,0.5);
+
+  background-color: white;
   text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.field-area {
+  border-color: green;
+  margin-bottom: 3px;
 }
 
 .App-logo {
@@ -34,5 +43,110 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.container {
+  max-width: 1170px;
+  height: 400px;
+  width: 300px;
+  position: relative;
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.Content {
+  position: relative;
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+/* use grid to make the layout */
+.register {
+  grid-area: 3 / 1 / 4 / 2;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 2px;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  padding: 20px 10px 20px 10px;
+}
+
+#creditNum {
+  grid-area: 1 / 1 / 2 / 6;
+}
+
+#cvc {
+  grid-area: 2 / 2 / 3 / 4; 
+}
+
+#exp {
+  grid-area: 2 / 4 / 3 / 6; 
+}
+
+#submit {
+  grid-area: 3 / 1 / 4 / 6; 
+}
+
+.Header {
+  grid-area: 1 / 1 / 2 / 2;
+  padding : 10px;
+  height: 25px;
+  position: relative;  
+  align-items: flex-start;
+  border-bottom: solid;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.Icon {
+  position: fixed;
+}
+
+.Headertext {
+  grid-area: 1 / 1 / 2 / 3;
+  
+  text-align: center;
+}
+
+/* exp input effect */
+input[type="month"]::before{
+  content: attr(placeholder) !important;
+  color: #aaa;
+  width: 100%;
+}
+
+input[type="month"]:focus::before,
+input[type="month"]:active::before {
+  content: "";
+  width: 0%;
+}
+
+/* simple responsive effect */
+@media only screen and (max-width: 300px) {
+.Header {
+  padding : 10px;
+  height: 25px;
+  position: relative;  
+  border-bottom: solid;
+  display: block;
+}
+  .Headertext {
+    display: none;
+  }
+  .Icon {
+    position: relative;
+    text-align: center;  
   }
 }
